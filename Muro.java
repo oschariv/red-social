@@ -16,7 +16,8 @@ public class Muro
      */
     public Muro()
     {
-
+        mensajes = new ArrayList<EntradaTexto>();
+        fotos = new ArrayList<EntradaFoto>();
     }
 
     /**
@@ -24,7 +25,7 @@ public class Muro
      */
     public void addEntradaTexto(EntradaTexto entradaTexto)
     {
-
+        mensajes.add(entradaTexto);
     }
 
     /**
@@ -32,14 +33,26 @@ public class Muro
      */
     public void addEntradaFoto(EntradaFoto entradaFoto)
     {
-
+        fotos.add(entradaFoto);
     }
 
     /**
      * 
      */
-    public String toSTring()
+    public void toSTring()
     {
-        return "";
+        if (!mensajes.isEmpty()) {
+            for (EntradaTexto entradaTextoActual : mensajes) {
+                entradaTextoActual.toString();
+            }
+        }
+        
+        if (!fotos.isEmpty()) {
+            for (EntradaFoto entradaFotoActual : fotos) {
+                entradaFotoActual.toString();
+            }
+        }
+        
+        
     }
 }
