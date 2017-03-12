@@ -34,7 +34,7 @@ public class EntradaFoto
      */
     public void meGusta()
     {
-        
+        cantidadMeGusta++;
     }
     
     /**
@@ -42,7 +42,7 @@ public class EntradaFoto
      */
     public void addComentario(String text)
     {
-        
+        comentarios.add(text);
     }
     
     /**

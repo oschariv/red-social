@@ -15,6 +15,8 @@ public class EntradaFotoTest
 {
     private EntradaFoto entradaF1;
 
+    
+
     /**
      * Default constructor for test class EntradaFotoTest
      */
@@ -33,6 +35,10 @@ public class EntradaFotoTest
         entradaF1 = new EntradaFoto("Oscar", "/fotos/hola.jpg", "Hola Mundo");
         entradaF1.toString();
         entradaF1.toString();
+        entradaF1.toString();
+        entradaF1.meGusta();
+        entradaF1.toString();
+        entradaF1.addComentario("Me encanta");
         entradaF1.toString();
     }
 
