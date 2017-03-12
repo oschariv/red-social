@@ -14,6 +14,7 @@ public class EntradaTexto
     private String mensaje;
     private LocalDateTime momentoPublicacion;
     private ArrayList<String> comentarios;
+    private int cantidadMeGusta;
 
     /**
      * Constructor for objects of class EntradaTexto
@@ -24,6 +25,7 @@ public class EntradaTexto
         this.mensaje = texto;
         comentarios = new ArrayList<String>();
         momentoPublicacion = LocalDateTime.now();
+        cantidadMeGusta = 0;
     }
 
     /**
@@ -31,7 +33,7 @@ public class EntradaTexto
      */
     public void meGusta()
     {
-        
+        cantidadMeGusta++;
     }
     
     /**
@@ -39,7 +41,7 @@ public class EntradaTexto
      */
     public void addComentario(String text)
     {
-        
+        comentarios.add(text);
     }
     
     /**
@@ -65,7 +67,8 @@ public class EntradaTexto
     {
         String cadenaADevolver = null;
         
-        cadenaADevolver = "Autor: " + usuario + ". Mensaje: " + mensaje;
+        cadenaADevolver = "Autor: " + usuario + ". Mensaje: " + mensaje + " " +
+                    cantidadMeGusta + " Me Gusta.";
         // Comprobamos si la diferencia de los localdatetime es mayor de 59 segundos.
         if (momentoPublicacion.until(LocalDateTime.now(), ChronoUnit.SECONDS) <= 59) {
             cadenaADevolver = cadenaADevolver + " Tiempo transcurrido: " + 
