@@ -76,25 +76,27 @@ public class EntradaFoto
     {
         String cadenaADevolver = null;
         
-        cadenaADevolver = "Autor: " + usuario + ". Titulo: " + titulo + " " 
-                    + urlImagen + " " + cantidadMeGusta + " Me Gusta.";
-        // Comprobamos si la diferencia de los localdatetime es mayor de 59 segundos.
-        if (momentoPublicacion.until(LocalDateTime.now(), ChronoUnit.SECONDS) <= 59) {
-            cadenaADevolver = cadenaADevolver + " Tiempo transcurrido: " + 
-                    momentoPublicacion.until(LocalDateTime.now(), ChronoUnit.SECONDS)
-                            + " segundos.";
+        cadenaADevolver = "Autor: " + usuario + ". \nTitulo: " + titulo + " \n" 
+                    + urlImagen + " \n" + cantidadMeGusta + " Me Gusta.";
+        
+        long segundosQuehanPasadoDesdeCreacion = momentoPublicacion.until(LocalDateTime.now(), ChronoUnit.SECONDS);
+        long minutosQueHanPasadoDesdeCreacion = segundosQuehanPasadoDesdeCreacion / 60;
+        long segundosResiduales = segundosQuehanPasadoDesdeCreacion % 60;
+        
+        cadenaADevolver += "\nTiempo transcurrido: ";
+        if (minutosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos.";
         }
-        // Si es mayor mostramos los minutos y los segundos.
-        else {
-            cadenaADevolver = cadenaADevolver + " Tiempo transcurrido: " + 
-                momentoPublicacion.until(LocalDateTime.now(), ChronoUnit.MINUTES)
-                + " minutos, " + 
-                (momentoPublicacion.until(LocalDateTime.now(), ChronoUnit.SECONDS) - 60) 
-                + " segundos.";
-        }
+        cadenaADevolver += segundosResiduales + " segundos.\n";
         
         if (comentarios.isEmpty()) {
             cadenaADevolver = cadenaADevolver + " - No contiene comentarios";
+        }
+        else {
+            cadenaADevolver += "Comentarios:\n";
+            for (String comentario : comentarios) {
+                cadenaADevolver += comentario + "\n";
+            }
         }
         
         //TEMPORAL

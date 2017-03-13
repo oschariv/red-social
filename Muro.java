@@ -39,20 +39,26 @@ public class Muro
     /**
      * 
      */
-    public void toSTring()
+    public String toSTring()
     {
+        String cadenaADevolver = null;
+        
         if (!mensajes.isEmpty()) {
             for (EntradaTexto entradaTextoActual : mensajes) {
-                entradaTextoActual.toString();
+                cadenaADevolver += entradaTextoActual.toString() + "\n";
             }
         }
         
         if (!fotos.isEmpty()) {
             for (EntradaFoto entradaFotoActual : fotos) {
-                entradaFotoActual.toString();
+                cadenaADevolver += entradaFotoActual.toString() + "\n";
             }
         }
         
-        
+        return cadenaADevolver;
+    }
+    
+    public void mostrar() {
+        System.out.println(this);
     }
 }
