@@ -20,7 +20,7 @@ public class EntradaFoto extends Comentario
     {
         super(autor);
         urlImagen = url;
-        titulo = titulo;
+        this.titulo = titulo;
     }
     
     /**
@@ -60,7 +60,7 @@ public class EntradaFoto extends Comentario
         cadenaADevolver += segundosResiduales + " segundos.\n";
         
         if (getComentarios().isEmpty()) {
-            cadenaADevolver = cadenaADevolver + " - No contiene comentarios";
+            cadenaADevolver = cadenaADevolver + "No contiene comentarios";
         }
         else {
             cadenaADevolver += "Comentarios:\n";
