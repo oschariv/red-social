@@ -7,41 +7,21 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class EntradaTexto
+public class EntradaTexto extends Entrada
 {
     // instance variables - replace the example below with your own
-    private String usuario;
+    
     private String mensaje;
-    private LocalDateTime momentoPublicacion;
-    private ArrayList<String> comentarios;
-    private int cantidadMeGusta;
+    
 
     /**
      * Constructor for objects of class EntradaTexto
      */
     public EntradaTexto(String autor, String texto)
     {
-        this.usuario = autor;
-        this.mensaje = texto;
-        comentarios = new ArrayList<String>();
-        momentoPublicacion = LocalDateTime.now();
-        cantidadMeGusta = 0;
-    }
-
-    /**
-     * 
-     */
-    public void meGusta()
-    {
-        cantidadMeGusta++;
-    }
-    
-    /**
-     * 
-     */
-    public void addComentario(String text)
-    {
-        comentarios.add(text);
+        super(autor);
+        mensaje = texto;
+        
     }
     
     /**
@@ -55,22 +35,14 @@ public class EntradaTexto
     /**
      * 
      */
-    public LocalDateTime getMomentoPublicacion()
-    {
-        return momentoPublicacion;
-    }
-    
-    /**
-     * 
-     */
     public String toString()
     {
         String cadenaADevolver = null;
         
-        cadenaADevolver = "Autor: " + usuario + ". \nMensaje: " + mensaje + " \n" +
-                    cantidadMeGusta + " Me Gusta.";
+        cadenaADevolver = "Autor: " + getAutor() + ". \nMensaje: " + mensaje + " \n" +
+                    getCantidadMeGusta() + " Me Gusta.";
                     
-        long segundosQuehanPasadoDesdeCreacion = momentoPublicacion.until(LocalDateTime.now(), ChronoUnit.SECONDS);
+        long segundosQuehanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
         long minutosQueHanPasadoDesdeCreacion = segundosQuehanPasadoDesdeCreacion / 60;
         long segundosResiduales = segundosQuehanPasadoDesdeCreacion % 60;
         
@@ -80,12 +52,12 @@ public class EntradaTexto
         }
         cadenaADevolver += segundosResiduales + " segundos.\n";
         
-        if (comentarios.isEmpty()) {
+        if (getComentarios().isEmpty()) {
             cadenaADevolver +=  "No contiene comentarios";
         }
         else {
             cadenaADevolver += "Comentarios:\n";
-            for (String comentario : comentarios) {
+            for (String comentario : getComentarios()) {
                 cadenaADevolver += comentario + "\n";
             }
         }
