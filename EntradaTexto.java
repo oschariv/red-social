@@ -66,4 +66,20 @@ public class EntradaTexto extends Entrada
         System.out.println(cadenaADevolver);
         return cadenaADevolver;
     }
+    
+    public void mostrarAutorYMensaje() {
+        System.out.println("Autor: " + getAutor() + "\nMensaje: " + mensaje);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
