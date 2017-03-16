@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class EntradaTexto extends Entrada
+public class EntradaTexto extends Comentario
 {
     // instance variables - replace the example below with your own
     

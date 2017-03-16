@@ -1,5 +1,4 @@
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 /**
  * Write a description of class Entrada here.
  * 
@@ -11,7 +10,6 @@ public class Entrada
     // instance variables - replace the example below with your own
     private String usuario;
     private LocalDateTime momentoPublicacion;
-    private ArrayList<String> comentarios;
     private int cantidadMeGusta;
 
     /**
@@ -20,7 +18,6 @@ public class Entrada
     public Entrada(String autor)
     {
         usuario = autor;
-        comentarios = new ArrayList<String>();
         momentoPublicacion = LocalDateTime.now();
         cantidadMeGusta = 0;
     }
@@ -48,14 +45,6 @@ public class Entrada
     /**
      * 
      */
-    public void addComentario(String text)
-    {
-        comentarios.add(text);
-    }
-    
-    /**
-     * 
-     */
     public String toString()
     {
         String cadenaADevolver = null;
@@ -67,9 +56,6 @@ public class Entrada
         return usuario;
     }
     
-    public ArrayList<String> getComentarios() {
-        return comentarios;
-    }
 }
 
 
