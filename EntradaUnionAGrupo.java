@@ -1,5 +1,6 @@
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 /**
  * Write a description of class EntradaUnionAGrupo here.
  * 
@@ -9,22 +10,22 @@ import java.time.temporal.ChronoUnit;
 public class EntradaUnionAGrupo extends Entrada
 {
     // instance variables - replace the example below with your own
-    private String grupo;
-
+    private String unionGrupo;
+    
     /**
      * Constructor for objects of class EntradaUnionAGrupo
      */
-    public EntradaUnionAGrupo(String autor, String grupo)
+    public EntradaUnionAGrupo(String autor, String unionGrupo)
     {
         super(autor);
-        this.grupo = grupo;
+        this.unionGrupo = unionGrupo;
     }
 
     public String toString()
     {
         String cadenaADevolver = null;
         
-        cadenaADevolver = getAutor() + "se ha unido al grupo " + grupo + ". \n" +
+        cadenaADevolver = getAutor() + "se ha unido al grupo " + unionGrupo + ". \n" +
                     getCantidadMeGusta() + " Me Gusta.";
                     
         long segundosQuehanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
@@ -37,8 +38,10 @@ public class EntradaUnionAGrupo extends Entrada
         }
         cadenaADevolver += segundosResiduales + " segundos.\n";
         
-        //TEMPORAL
-        System.out.println(cadenaADevolver);
         return cadenaADevolver;
+    }
+    
+    public void mostrar(){
+        System.out.println(this);
     }
 }

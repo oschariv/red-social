@@ -12,7 +12,7 @@ public class EntradaFoto extends Comentario
     // instance variables - replace the example below with your own
     private String urlImagen;
     private String titulo;
-
+    
     /**
      * Constructor for objects of class EntradaFoto
      */
@@ -69,12 +69,13 @@ public class EntradaFoto extends Comentario
             }
         }
         
-        //TEMPORAL
-        System.out.println(cadenaADevolver);
-        
         return cadenaADevolver;
     }
     
+    
+    public void mostrar(){
+        System.out.println(this);
+    }
 }
 
 

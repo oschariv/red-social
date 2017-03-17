@@ -12,7 +12,6 @@ public class EntradaTexto extends Comentario
     // instance variables - replace the example below with your own
     
     private String mensaje;
-    
 
     /**
      * Constructor for objects of class EntradaTexto
@@ -21,7 +20,6 @@ public class EntradaTexto extends Comentario
     {
         super(autor);
         mensaje = texto;
-        
     }
     
     /**
@@ -62,13 +60,15 @@ public class EntradaTexto extends Comentario
             }
         }
         
-        //TEMPORAL
-        System.out.println(cadenaADevolver);
         return cadenaADevolver;
     }
     
     public void mostrarAutorYMensaje() {
         System.out.println("Autor: " + getAutor() + "\nMensaje: " + mensaje);
+    }
+    
+    public void mostrar(){
+        System.out.println(this);
     }
 }
 

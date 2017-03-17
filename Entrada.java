@@ -56,6 +56,9 @@ public class Entrada
         return usuario;
     }
     
+    public void mostrar(){
+        System.out.println(this);
+    }
 }
 
 
