@@ -30,4 +30,20 @@ public class Comentario extends Entrada
     public ArrayList<String> getComentarios() {
         return comentarios;
     }
+    
+    public String toString() {
+        String cadenaADevolver = super.toString();
+        
+        if (getComentarios().isEmpty()) {
+            cadenaADevolver = cadenaADevolver + "No contiene comentarios";
+        }
+        else {
+            cadenaADevolver += "Comentarios:\n";
+            for (String comentario : getComentarios()) {
+                cadenaADevolver += comentario + "\n";
+            }
+        }
+        
+        return cadenaADevolver;
+    }
 }

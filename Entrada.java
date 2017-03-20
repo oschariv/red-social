@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 /**
  * Write a description of class Entrada here.
  * 
@@ -47,7 +48,22 @@ public class Entrada
      */
     public String toString()
     {
-        String cadenaADevolver = null;
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += "Autor: " + usuario + "\n";
+        
+        long segundosQuehanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
+        long minutosQueHanPasadoDesdeCreacion = segundosQuehanPasadoDesdeCreacion / 60;
+        long segundosResiduales = segundosQuehanPasadoDesdeCreacion % 60;
+        
+        cadenaADevolver += "Tiempo transcurrido: ";
+        if (minutosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos y ";
+        }
+        cadenaADevolver += segundosResiduales + " segundos.\n";
+        
+        cadenaADevolver += getCantidadMeGusta() + " Me Gusta.\n";
+        
         
         return cadenaADevolver;
     }

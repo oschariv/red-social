@@ -44,31 +44,14 @@ public class EntradaFoto extends Comentario
      */
     public String toString()
     {
-        String cadenaADevolver = null;
+        String cadenaADevolver = super.toString();
         
-        cadenaADevolver = "Autor: " + getAutor() + ". \nTitulo: " + titulo + " \n" 
-                    + urlImagen + " \n" + getCantidadMeGusta() + " Me Gusta.";
         
-        long segundosQuehanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
-        long minutosQueHanPasadoDesdeCreacion = segundosQuehanPasadoDesdeCreacion / 60;
-        long segundosResiduales = segundosQuehanPasadoDesdeCreacion % 60;
         
-        cadenaADevolver += "\nTiempo transcurrido: ";
-        if (minutosQueHanPasadoDesdeCreacion > 0) {
-            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos.";
-        }
-        cadenaADevolver += segundosResiduales + " segundos.\n";
+        cadenaADevolver += ". \nTitulo: " + titulo + " \nImagen" 
+                    + urlImagen ;
         
-        if (getComentarios().isEmpty()) {
-            cadenaADevolver = cadenaADevolver + "No contiene comentarios";
-        }
-        else {
-            cadenaADevolver += "Comentarios:\n";
-            for (String comentario : getComentarios()) {
-                cadenaADevolver += comentario + "\n";
-            }
-        }
-        
+        System.out.println(cadenaADevolver);
         return cadenaADevolver;
     }
     
