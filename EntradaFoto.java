@@ -12,6 +12,7 @@ public class EntradaFoto extends Comentario
     // instance variables - replace the example below with your own
     private String urlImagen;
     private String titulo;
+    private static final int DATOS_ASOCIADOS = 6;
     
     /**
      * Constructor for objects of class EntradaFoto
@@ -58,6 +59,20 @@ public class EntradaFoto extends Comentario
     
     public void mostrar(){
         System.out.println(this);
+    }
+    
+    public int getCantidadDeDatosAsociadosALaEntrada(){
+        return DATOS_ASOCIADOS;
+    }
+    
+    public String mostrarDatosExclusivos() {
+		String cadenaADevolver = titulo + "\n" + urlImagen;
+        System.out.println(cadenaADevolver);
+        return cadenaADevolver;
+	}
+	
+	public String nombreClase(){
+        return this.getClass().getSimpleName();
     }
 }
 

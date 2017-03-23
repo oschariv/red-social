@@ -75,6 +75,14 @@ public class Entrada
     public void mostrar(){
         System.out.println(this);
     }
+    
+    public int getCantidadDeDatosAsociadosALaEntrada(){
+        return 0;
+    }
+    
+     public String nombreClase(){
+        return this.getClass().getSimpleName();
+    }
 }
 
 

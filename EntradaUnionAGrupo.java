@@ -11,6 +11,7 @@ public class EntradaUnionAGrupo extends Entrada
 {
     // instance variables - replace the example below with your own
     private String unionGrupo;
+    private static final int DATOS_ASOCIADOS = 4;
     
     /**
      * Constructor for objects of class EntradaUnionAGrupo
@@ -43,5 +44,19 @@ public class EntradaUnionAGrupo extends Entrada
     
     public void mostrar(){
         System.out.println(this);
+    }
+    
+    public int getCantidadDeDatosAsociadosALaEntrada(){
+        return DATOS_ASOCIADOS;
+    }
+    
+    public String mostrarDatosExclusivos() {
+        String cadenaADevolver = unionGrupo;
+		System.out.println(cadenaADevolver);
+		return cadenaADevolver;
+	}
+	
+	public String nombreClase(){
+        return this.getClass().getSimpleName();
     }
 }

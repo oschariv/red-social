@@ -10,8 +10,9 @@ import java.util.ArrayList;
 public class EntradaTexto extends Comentario
 {
     // instance variables - replace the example below with your own
-    
+
     private String mensaje;
+    private static final int DATOS_ASOCIADOS = 5;
 
     /**
      * Constructor for objects of class EntradaTexto
@@ -21,7 +22,7 @@ public class EntradaTexto extends Comentario
         super(autor);
         mensaje = texto;
     }
-    
+
     /**
      * 
      */
@@ -29,34 +30,42 @@ public class EntradaTexto extends Comentario
     {
         return mensaje;
     }
-    
+
     /**
      * 
      */
     public String toString()
     {
         String cadenaADevolver = super.toString();
-        
+
         cadenaADevolver +=". \nMensaje: " + mensaje + " \n";
-        
+
+        System.out.println(cadenaADevolver);
+        return cadenaADevolver;
+    }
+
+    public void mostrarAutorYMensaje() {
+        System.out.println("Autor: " + getAutor() + "\nMensaje: " + mensaje);
+    }
+
+    public void mostrar(){
+        System.out.println(this);
+    }
+
+    public int getCantidadDeDatosAsociadosALaEntrada(){
+        return DATOS_ASOCIADOS;
+    }
+
+    public String mostrarDatosExclusivos() {
+        String cadenaADevolver = mensaje;
         System.out.println(cadenaADevolver);
         return cadenaADevolver;
     }
     
-    public void mostrarAutorYMensaje() {
-        System.out.println("Autor: " + getAutor() + "\nMensaje: " + mensaje);
-    }
-    
-    public void mostrar(){
-        System.out.println(this);
+    public String nombreClase(){
+        return this.getClass().getSimpleName();
     }
 }
-
-
-
-
-
-
 
 
 
