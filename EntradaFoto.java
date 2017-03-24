@@ -65,10 +65,9 @@ public class EntradaFoto extends Comentario
         return DATOS_ASOCIADOS;
     }
     
-    public String mostrarDatosExclusivos() {
-		String cadenaADevolver = titulo + "\n" + urlImagen;
-        System.out.println(cadenaADevolver);
-        return cadenaADevolver;
+    public void mostrarDatosExclusivos() {
+        System.out.println(urlImagen);
+        System.out.println(titulo);
 	}
 	
 	public String nombreClase(){

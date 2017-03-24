@@ -50,10 +50,8 @@ public class EntradaUnionAGrupo extends Entrada
         return DATOS_ASOCIADOS;
     }
     
-    public String mostrarDatosExclusivos() {
-        String cadenaADevolver = unionGrupo;
-		System.out.println(cadenaADevolver);
-		return cadenaADevolver;
+    public void mostrarDatosExclusivos() {
+		System.out.println(unionGrupo);
 	}
 	
 	public String nombreClase(){

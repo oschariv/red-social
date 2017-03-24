@@ -56,10 +56,8 @@ public class EntradaTexto extends Comentario
         return DATOS_ASOCIADOS;
     }
 
-    public String mostrarDatosExclusivos() {
-        String cadenaADevolver = mensaje;
-        System.out.println(cadenaADevolver);
-        return cadenaADevolver;
+    public void mostrarDatosExclusivos() {
+        System.out.println(mensaje);
     }
     
     public String nombreClase(){

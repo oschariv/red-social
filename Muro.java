@@ -58,28 +58,26 @@ public class Muro
         System.out.println(cadenaADevolver);
     }
 
-    public void mostrarDatosExclusivosEntradasFiltradas(String entradaABuscar , String usuarioABuscar) {
-        String cadena = "";
-        if (!entrada.isEmpty()) {
-            for (Entrada entradaActual : entrada) {
-                if (usuarioABuscar.equals(entradaActual.getAutor())){
-                    if (entradaActual instanceof EntradaTexto){
-                        cadena += ((EntradaTexto) entradaActual).mostrarDatosExclusivos();
+    public void mostrarDatosExclusivosEntradasFiltradas(String tipoEntrada , String autor) {
+        // Recorremos la coleccion
+        for (Entrada entrada : entrada){
+            // Decicmos si los datos se imprimen o no.
+            if (entrada.getClass().getSimpleName().equals(tipoEntrada) || tipoEntrada == null) {
+                if (entrada.getAutor().equals(autor) || autor == null){
+                    // Imprimimos los datos Exclusivos.
+                    if (entrada instanceof EntradaTexto) {
+                        ((EntradaTexto)entrada).mostrarDatosExclusivos();
                     }
-                    if (entradaActual instanceof EntradaFoto){
-                        cadena += ((EntradaFoto) entradaActual).mostrarDatosExclusivos();
+                    else if (entrada instanceof EntradaFoto) {
+                        ((EntradaFoto)entrada).mostrarDatosExclusivos();
                     }
-                    if (entradaActual instanceof EntradaUnionAGrupo){
-                        cadena += ((EntradaUnionAGrupo) entradaActual).mostrarDatosExclusivos();
-                    }
+                    else if (entrada instanceof EntradaUnionAGrupo) {
+                        ((EntradaUnionAGrupo)entrada).mostrarDatosExclusivos();
+                    } 
                 }
             }
         }
-        System.out.println(cadena);
     }
 }
-
-
-
 
 
