@@ -1,10 +1,13 @@
 import java.util.ArrayList;
-
+// Imports para escribir ficheros y mostrar excepciones
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.BufferedWriter;
 import java.nio.file.Files;
 import java.io.IOException;
+// imports para abrir un html con el navegador
+import java.awt.Desktop;
+import java.io.File;
 
 /**
  * Write a description of class Muro here.
@@ -16,13 +19,14 @@ public class Muro
 {
     // instance variables - replace the example below with your own
     private ArrayList<Entrada> entrada;
-
+    private Desktop desktop;
     /**
      * Constructor for objects of class Muro
      */
     public Muro()
     {
         entrada = new ArrayList<>();
+
     }
 
     /**
@@ -122,6 +126,32 @@ public class Muro
             // Mostramos por pantalla la excepción que se ha producido
             System.out.println(excepcion.toString());
         }
+
+        // Abrimos el archivo con el navegador
+
+        
+        try {
+            Runtime.getRuntime().exec("C:/Program Files (x86)/Mozilla Firefox/firefox.exe"+" "+"Muro.html");
+        }
+        catch (IOException excepcion) {
+            System.out.println(excepcion.toString());
+        }
+
+        //             if (Desktop.isDesktopSupported()) {
+        //                 desktop = Desktop.getDesktop();
+        //                 try {
+        //                     desktop.open();
+        //                 }
+        //                 catch (IOException excepcion) {
+        //                     System.out.println(excepcion.toString());
+        //                 }
+        //             }
+        //             else {
+        //                 System.out.println("No compatible");
+        //             }
     }
 }
+
+
+
 
