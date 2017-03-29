@@ -1,4 +1,11 @@
 import java.util.ArrayList;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.BufferedWriter;
+import java.nio.file.Files;
+import java.io.IOException;
+
 /**
  * Write a description of class Muro here.
  * 
@@ -78,6 +85,43 @@ public class Muro
             }
         }
     }
-}
 
+    public void mostrarMuroEnNavegador(){
+        // Obtenemos una referencia a una ruta donde estará el archivo
+        Path rutaArchivo = Paths.get("Muro.html");
+
+        // Abrimos el archivo, escribimos en él y lo cerramos. 
+        try  
+        {
+            BufferedWriter archivo = Files.newBufferedWriter(rutaArchivo);
+            archivo.write("<!DOCTYPE html>");
+            archivo.write("<html>");
+            archivo.write("<head>");
+            archivo.write("<title>SocialBook</title>");
+            archivo.write("</head>");
+            archivo.write("<body>");
+            archivo.write("<h1>Muro Social</h1>");
+            for (Entrada entrada : entrada){
+                if (entrada instanceof EntradaTexto) {
+                    archivo.write("<p>" + ((EntradaTexto)entrada).toString() + "</p>");
+                }
+                else if (entrada instanceof EntradaFoto) {
+                    archivo.write("<p>" + ((EntradaFoto)entrada).toString() + "</p>");
+                }
+                else if (entrada instanceof EntradaUnionAGrupo) {
+                    archivo.write("<p>" +  ((EntradaUnionAGrupo)entrada).toString() + "</p>");
+                } 
+            }
+
+            archivo.write("</body>");
+            archivo.write("</html>");
+
+            archivo.close();
+        }
+        catch (IOException excepcion) {
+            // Mostramos por pantalla la excepción que se ha producido
+            System.out.println(excepcion.toString());
+        }
+    }
+}
 
