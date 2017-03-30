@@ -68,6 +68,22 @@ public class Entrada
         return cadenaADevolver;
     }
     
+    public String getStringMomentoPublicacion(){
+        String cadenaADevolver = "";
+        
+        long segundosQuehanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
+        long minutosQueHanPasadoDesdeCreacion = segundosQuehanPasadoDesdeCreacion / 60;
+        long segundosResiduales = segundosQuehanPasadoDesdeCreacion % 60;
+        
+        cadenaADevolver += "Tiempo transcurrido: ";
+        if (minutosQueHanPasadoDesdeCreacion > 0) {
+            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos y ";
+        }
+        cadenaADevolver += segundosResiduales + " segundos.\n";
+        
+        return cadenaADevolver;
+    }
+    
     public String getAutor() {
         return usuario;
     }
@@ -84,14 +100,4 @@ public class Entrada
         return this.getClass().getSimpleName();
     }
 }
-
-
-
-
-
-
-
-
-
-
 

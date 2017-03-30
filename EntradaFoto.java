@@ -13,7 +13,7 @@ public class EntradaFoto extends Comentario
     private String urlImagen;
     private String titulo;
     private static final int DATOS_ASOCIADOS = 6;
-    
+
     /**
      * Constructor for objects of class EntradaFoto
      */
@@ -23,7 +23,7 @@ public class EntradaFoto extends Comentario
         urlImagen = url;
         this.titulo = titulo;
     }
-    
+
     /**
      * 
      */
@@ -31,7 +31,7 @@ public class EntradaFoto extends Comentario
     {
         return urlImagen;
     }
-    
+
     /**
      * 
      */
@@ -39,45 +39,77 @@ public class EntradaFoto extends Comentario
     {
         return titulo;
     }
-    
+
     /**
      * 
      */
     public String toString()
     {
         String cadenaADevolver = super.toString();
-        
-        
-        
+
         cadenaADevolver += ". \nTitulo: " + titulo + " \nImagen" 
-                    + urlImagen ;
-        
+        + urlImagen ;
+
         System.out.println(cadenaADevolver);
         return cadenaADevolver;
     }
-    
-    
+
     public void mostrar(){
         System.out.println(this);
     }
-    
+
     public int getCantidadDeDatosAsociadosALaEntrada(){
         return DATOS_ASOCIADOS;
     }
-    
+
     public void mostrarDatosExclusivos() {
         System.out.println(urlImagen);
         System.out.println(titulo);
-	}
-	
-	public String nombreClase(){
+    }
+
+    public String nombreClase(){
         return this.getClass().getSimpleName();
     }
+
+    /**
+     * Metodo para imprimir datos para luego crear una pagina html.
+     */
+    public String toStringWeb(){
+        String cadenaADevolver = "";
+
+        cadenaADevolver += "<header>" + "\n" +
+        "<hgroup>" + "\n" +
+        "<h1>" + getAutor() + "</h1> ha publicado: " + "\n" +
+        "</hgroup>" + "\n" +
+        "</header>" + "\n" +
+        "<section>" + "\n" +
+        "<figure>" + "\n" +
+        "<img src=" + urlImagen + " class=\"imagen\">" + "\n" +
+        "<figcaption>" + "\n" +
+        titulo + "\n" +
+        "</figcaption>" + "\n" +
+        "</figure>" + "\n" +
+        "<p>" + "\n" +
+        getCantidadMeGusta() + " Me Gusta. " + " " + getStringMomentoPublicacion() + "\n" +
+        "</p>" + "\n" +
+        "</section>" + "\n" +
+        "<footer>" + "\n" +
+        "<p>" + "\n";
+        if (getComentarios().isEmpty()) {
+            cadenaADevolver = cadenaADevolver + "No contiene comentarios";
+        }
+        else {
+            cadenaADevolver += "Comentarios: <br />\n";
+            for (String comentario : getComentarios()) {
+                cadenaADevolver += "- " + comentario + "<br />\n";
+            }
+        }
+        cadenaADevolver += "<br />" + "\n" +
+        "</p>" + "\n" +
+        "</footer>";
+
+        return cadenaADevolver;
+    }
+
+    
 }
-
-
-
-
-
-
-

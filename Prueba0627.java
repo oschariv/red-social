@@ -21,6 +21,14 @@ public class Prueba0627
     private EntradaUnionAGrupo entradaU1;
     private EntradaUnionAGrupo entradaU2;
 
+    
+    
+    
+    
+    
+    
+    
+
     /**
      * Default constructor for test class Prueba0627
      */
@@ -39,8 +47,8 @@ public class Prueba0627
         muro1 = new Muro();
         entradaT1 = new EntradaTexto("oscar", "hola");
         entradaT2 = new EntradaTexto("borja", "lol");
-        entradaF1 = new EntradaFoto("oscar", "http://asdf", "win");
-        entradaF2 = new EntradaFoto("borja", "http://dfaseef", "snow");
+        entradaF1 = new EntradaFoto("oscar", "Recursos/icon.jpeg", "win");
+        entradaF2 = new EntradaFoto("borja", "Recursos/Tiles.png", "snow");
         entradaU1 = new EntradaUnionAGrupo("borja", "ALIDAM");
         entradaU2 = new EntradaUnionAGrupo("oscar", "ALIDAM");
         muro1.addEntrada(entradaT1);
@@ -49,6 +57,9 @@ public class Prueba0627
         muro1.addEntrada(entradaF2);
         muro1.addEntrada(entradaU1);
         muro1.addEntrada(entradaU2);
+        entradaF2.addComentario("Muy buena");
+        entradaF2.addComentario("OMG");
+        entradaT1.addComentario("Venga hasta lue..");
     }
 
     /**

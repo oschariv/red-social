@@ -24,21 +24,11 @@ public class EntradaUnionAGrupo extends Entrada
 
     public String toString()
     {
-        String cadenaADevolver = null;
+        String cadenaADevolver = super.toString();
         
-        cadenaADevolver = getAutor() + "se ha unido al grupo " + unionGrupo + ". \n" +
+        cadenaADevolver += getAutor() + "se ha unido al grupo " + unionGrupo + ". \n" +
                     getCantidadMeGusta() + " Me Gusta.";
                     
-        long segundosQuehanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
-        long minutosQueHanPasadoDesdeCreacion = segundosQuehanPasadoDesdeCreacion / 60;
-        long segundosResiduales = segundosQuehanPasadoDesdeCreacion % 60;
-        
-        cadenaADevolver += "\nTiempo transcurrido: ";
-        if (minutosQueHanPasadoDesdeCreacion > 0) {
-            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos.";
-        }
-        cadenaADevolver += segundosResiduales + " segundos.\n";
-        
         return cadenaADevolver;
     }
     
@@ -57,4 +47,36 @@ public class EntradaUnionAGrupo extends Entrada
 	public String nombreClase(){
         return this.getClass().getSimpleName();
     }
+    
+    /**
+     * Metodo para imprimir datos para luego crear una pagina html.
+     */
+    public String toStringWeb(){
+        String cadenaADevolver = "";
+
+        cadenaADevolver += "<header>" + "\n" +
+        "<hgroup>" + "\n" +
+        "<h1>" + getAutor() + "</h1> Se ha unido a : " + "\n" +
+        "<h2>" + unionGrupo + "</h2>" + "\n" +
+        "</hgroup>" + "\n" +
+        "</header>" + "\n" +
+        "<section>" + "\n" +
+        "<p>" + "\n" +
+        getCantidadMeGusta() + " Me Gusta. " + " " + getStringMomentoPublicacion() + "\n" +
+        "</p>" + "\n" +
+        "</section>";
+
+        return cadenaADevolver;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

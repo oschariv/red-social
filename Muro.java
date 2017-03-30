@@ -5,9 +5,8 @@ import java.nio.file.Paths;
 import java.io.BufferedWriter;
 import java.nio.file.Files;
 import java.io.IOException;
-// imports para abrir un html con el navegador
-import java.awt.Desktop;
-import java.io.File;
+
+import java.util.Scanner;
 
 /**
  * Write a description of class Muro here.
@@ -19,7 +18,6 @@ public class Muro
 {
     // instance variables - replace the example below with your own
     private ArrayList<Entrada> entrada;
-    private Desktop desktop;
     /**
      * Constructor for objects of class Muro
      */
@@ -92,33 +90,26 @@ public class Muro
 
     public void mostrarMuroEnNavegador(){
         // Obtenemos una referencia a una ruta donde estará el archivo
-        Path rutaArchivo = Paths.get("Muro.html");
+        Path rutaArchivo = Paths.get("muro.html");
 
         // Abrimos el archivo, escribimos en él y lo cerramos. 
         try  
         {
             BufferedWriter archivo = Files.newBufferedWriter(rutaArchivo);
-            archivo.write("<!DOCTYPE html>");
-            archivo.write("<html>");
-            archivo.write("<head>");
-            archivo.write("<title>SocialBook</title>");
-            archivo.write("</head>");
-            archivo.write("<body>");
-            archivo.write("<h1>Muro Social</h1>");
+            archivo.write("<!DOCTYPE html><html><head><title>SocialBook</title><link rel=\"stylesheet\" href=\"Recursestilomuro.css\"></head><body><div class=\"agrupar\"><nav class=\"menu\"><ul><li class=\"botonmenu\"><a href=\"muro.html\">Muro Social</a></li><li class=\"botonmenu\">Busqueda</li><li class=\"botonmenu\">Contactos</li><li class=\"botonmenu\">Mensajes</li><li class=\"botonmenu\"><a href=\"https://github.com/oschariv\">Mi Perfil</li></ul></nav><section class=\"seccion\"><h1 class=\"h1\">Seccion de noticias.</h1>");
             for (Entrada entrada : entrada){
                 if (entrada instanceof EntradaTexto) {
-                    archivo.write("<p>" + ((EntradaTexto)entrada).toString() + "</p>");
+                    archivo.write("<article class=\"articulo\">" + ((EntradaTexto)entrada).toStringWeb() + "</article>");
                 }
                 else if (entrada instanceof EntradaFoto) {
-                    archivo.write("<p>" + ((EntradaFoto)entrada).toString() + "</p>");
+                    archivo.write("<article class=\"articulo\">" + ((EntradaFoto)entrada).toStringWeb() + "</article>");
                 }
                 else if (entrada instanceof EntradaUnionAGrupo) {
-                    archivo.write("<p>" +  ((EntradaUnionAGrupo)entrada).toString() + "</p>");
+                    archivo.write("<article class=\"articulo\">" +  ((EntradaUnionAGrupo)entrada).toStringWeb() + "</article>");
                 } 
             }
 
-            archivo.write("</body>");
-            archivo.write("</html>");
+            archivo.write("</section><footer class=\"pie\">Web creada por Oscar Charro Rivera <a href=\"https://github.com/oschariv\">(@Oschariv)</a></footer></div></body></html>");
 
             archivo.close();
         }
@@ -129,7 +120,6 @@ public class Muro
 
         // Abrimos el archivo con el navegador
 
-        
         try {
             Runtime.getRuntime().exec("C:/Program Files (x86)/Mozilla Firefox/firefox.exe"+" "+"Muro.html");
         }
@@ -137,21 +127,7 @@ public class Muro
             System.out.println(excepcion.toString());
         }
 
-        //             if (Desktop.isDesktopSupported()) {
-        //                 desktop = Desktop.getDesktop();
-        //                 try {
-        //                     desktop.open();
-        //                 }
-        //                 catch (IOException excepcion) {
-        //                     System.out.println(excepcion.toString());
-        //                 }
-        //             }
-        //             else {
-        //                 System.out.println("No compatible");
-        //             }
     }
+
+    
 }
-
-
-
-
