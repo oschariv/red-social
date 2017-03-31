@@ -75,39 +75,14 @@ public class EntradaFoto extends Comentario
      * Metodo para imprimir datos para luego crear una pagina html.
      */
     public String toStringWeb(){
-        String cadenaADevolver = "";
+        String cadenaADevolver = super.toStringWeb();
 
-        cadenaADevolver += "<header>" + "\n" +
-        "<hgroup>" + "\n" +
-        "<h1>" + getAutor() + "</h1> ha publicado: " + "\n" +
-        "</hgroup>" + "\n" +
-        "</header>" + "\n" +
-        "<section>" + "\n" +
-        "<figure>" + "\n" +
+        cadenaADevolver += "<section>" + "\n" + "<figure>" + "\n" +
         "<img src=" + urlImagen + " class=\"imagen\">" + "\n" +
-        "<figcaption>" + "\n" +
-        titulo + "\n" +
-        "</figcaption>" + "\n" +
+        "<figcaption>" + "\n" + titulo + "\n" + "</figcaption>" + "\n" +
         "</figure>" + "\n" +
-        "<p>" + "\n" +
-        getCantidadMeGusta() + " Me Gusta. " + " " + getStringMomentoPublicacion() + "\n" +
-        "</p>" + "\n" +
-        "</section>" + "\n" +
-        "<footer>" + "\n" +
-        "<p>" + "\n";
-        if (getComentarios().isEmpty()) {
-            cadenaADevolver = cadenaADevolver + "No contiene comentarios";
-        }
-        else {
-            cadenaADevolver += "Comentarios: <br />\n";
-            for (String comentario : getComentarios()) {
-                cadenaADevolver += "- " + comentario + "<br />\n";
-            }
-        }
-        cadenaADevolver += "<br />" + "\n" +
-        "</p>" + "\n" +
-        "</footer>";
-
+        "</section>" + "\n";
+        
         return cadenaADevolver;
     }
 

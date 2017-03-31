@@ -68,34 +68,12 @@ public class EntradaTexto extends Comentario
      * Metodo para imprimir datos para luego crear una pagina html.
      */
     public String toStringWeb(){
-        String cadenaADevolver = "";
+        String cadenaADevolver = super.toStringWeb();
 
-        cadenaADevolver += "<header>" + "\n" +
-        "<hgroup>" + "\n" +
-        "<h1>" + getAutor() + "</h1> ha publicado: " + "\n" +
-        "<h2>" + mensaje + "</h2>" + "\n" +
-        "</hgroup>" + "\n" +
-        "</header>" + "\n" +
-        "<section>" + "\n" +
-        "<p>" + "\n" +
-        getCantidadMeGusta() + " Me Gusta. " + " " + getStringMomentoPublicacion() + "\n" +
-        "</p>" + "\n" +
-        "</section>" + "\n" +
-        "<footer>" + "\n" +
-        "<p>" + "\n";
-        if (getComentarios().isEmpty()) {
-            cadenaADevolver = cadenaADevolver + "No contiene comentarios";
-        }
-        else {
-            cadenaADevolver += "Comentarios: <br />\n";
-            for (String comentario : getComentarios()) {
-                cadenaADevolver += "- " + comentario + "<br />\n";
-            }
-        }
-        cadenaADevolver += "<br />" + "\n" +
-        "</p>" + "\n" +
-        "</footer>";
-
+        cadenaADevolver += "<section>" + "\n" + "</hgroup>" + "\n" +
+        "<h2>Ha publicada: " + mensaje + "</h2>" + "\n" + "</hgroup>" + "\n" +
+        "</section>" + "\n";
+        
         return cadenaADevolver;
     }
 

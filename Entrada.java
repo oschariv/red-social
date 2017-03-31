@@ -50,19 +50,8 @@ public class Entrada
     {
         String cadenaADevolver = "";
         
-        cadenaADevolver += "Autor: " + usuario + "\n";
-        
-        long segundosQuehanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(), ChronoUnit.SECONDS);
-        long minutosQueHanPasadoDesdeCreacion = segundosQuehanPasadoDesdeCreacion / 60;
-        long segundosResiduales = segundosQuehanPasadoDesdeCreacion % 60;
-        
-        cadenaADevolver += "Tiempo transcurrido: ";
-        if (minutosQueHanPasadoDesdeCreacion > 0) {
-            cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos y ";
-        }
-        cadenaADevolver += segundosResiduales + " segundos.\n";
-        
-        cadenaADevolver += getCantidadMeGusta() + " Me Gusta.\n";
+        cadenaADevolver += "Autor: " + usuario + "\n" + getStringMomentoPublicacion()
+         + "\n" + getCantidadMeGusta() + " Me Gusta.\n";
         
         
         return cadenaADevolver;
@@ -79,7 +68,7 @@ public class Entrada
         if (minutosQueHanPasadoDesdeCreacion > 0) {
             cadenaADevolver += minutosQueHanPasadoDesdeCreacion + " minutos y ";
         }
-        cadenaADevolver += segundosResiduales + " segundos.\n";
+        cadenaADevolver += segundosResiduales + " segundos.";
         
         return cadenaADevolver;
     }
@@ -99,5 +88,29 @@ public class Entrada
      public String nombreClase(){
         return this.getClass().getSimpleName();
     }
+    
+    public String toStringWeb(){
+        String cadenaADevolver = "";
+        
+        cadenaADevolver += cadenaADevolver += "<header>" + "\n" +
+        "<hgroup>" + "\n" +
+        "<h1>" + usuario + "</h1>" + "\n" +
+        "</hgroup>" + "\n" +
+        "</header>" + "\n" +
+        "<section>" + "\n" +
+        "<p>" + "\n" +
+        getCantidadMeGusta() + " Me Gusta. " + " " + getStringMomentoPublicacion() + "\n" +
+        "</p>" + "\n" +
+        "</section>" + "\n";
+        
+        return cadenaADevolver;
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 

@@ -96,7 +96,7 @@ public class Muro
         try  
         {
             BufferedWriter archivo = Files.newBufferedWriter(rutaArchivo);
-            archivo.write("<!DOCTYPE html><html><head><title>SocialBook</title><link rel=\"stylesheet\" href=\"Recursestilomuro.css\"></head><body><div class=\"agrupar\"><nav class=\"menu\"><ul><li class=\"botonmenu\"><a href=\"muro.html\">Muro Social</a></li><li class=\"botonmenu\">Busqueda</li><li class=\"botonmenu\">Contactos</li><li class=\"botonmenu\">Mensajes</li><li class=\"botonmenu\"><a href=\"https://github.com/oschariv\">Mi Perfil</li></ul></nav><section class=\"seccion\"><h1 class=\"h1\">Seccion de noticias.</h1>");
+            archivo.write("<!DOCTYPE html><html><head><title>SocialBook</title><link rel=\"stylesheet\" href=\"Recursos/estilomuro.css\"></head><body><div class=\"agrupar\"><nav class=\"menu\"><ul><li class=\"botonmenu\"><a href=\"muro.html\">Muro Social</a></li><li class=\"botonmenu\">Busqueda</li><li class=\"botonmenu\">Contactos</li><li class=\"botonmenu\">Mensajes</li><li class=\"botonmenu\"><a href=\"https://github.com/oschariv\">Mi Perfil</a></li></ul></nav><section class=\"seccion\"><h1 class=\"h1\">Seccion de noticias.</h1>");
             for (Entrada entrada : entrada){
                 if (entrada instanceof EntradaTexto) {
                     archivo.write("<article class=\"articulo\">" + ((EntradaTexto)entrada).toStringWeb() + "</article>");

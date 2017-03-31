@@ -52,18 +52,11 @@ public class EntradaUnionAGrupo extends Entrada
      * Metodo para imprimir datos para luego crear una pagina html.
      */
     public String toStringWeb(){
-        String cadenaADevolver = "";
+        String cadenaADevolver = super.toStringWeb();
 
-        cadenaADevolver += "<header>" + "\n" +
-        "<hgroup>" + "\n" +
-        "<h1>" + getAutor() + "</h1> Se ha unido a : " + "\n" +
-        "<h2>" + unionGrupo + "</h2>" + "\n" +
-        "</hgroup>" + "\n" +
-        "</header>" + "\n" +
-        "<section>" + "\n" +
-        "<p>" + "\n" +
-        getCantidadMeGusta() + " Me Gusta. " + " " + getStringMomentoPublicacion() + "\n" +
-        "</p>" + "\n" +
+        cadenaADevolver += "</header>" + "\n" +
+        "<section>" + "\n" + "<hgroup>" + "\n" +
+        "<h2>Se ha unido a : " + unionGrupo + "</h2>" + "\n" + "</hgroup>" + "\n" +
         "</section>";
 
         return cadenaADevolver;

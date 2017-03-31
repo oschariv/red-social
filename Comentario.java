@@ -34,16 +34,31 @@ public class Comentario extends Entrada
     public String toString() {
         String cadenaADevolver = super.toString();
         
+        
+        
+        return cadenaADevolver;
+    }
+    
+    public String toStringWeb(){
+        String cadenaADevolver = super.toStringWeb();
+
+        cadenaADevolver += "<footer>" + "\n" + "<p>" + "\n";
         if (getComentarios().isEmpty()) {
             cadenaADevolver = cadenaADevolver + "No contiene comentarios";
         }
         else {
-            cadenaADevolver += "Comentarios:\n";
+            cadenaADevolver += "Comentarios:\n <br />";
             for (String comentario : getComentarios()) {
-                cadenaADevolver += comentario + "\n";
+                cadenaADevolver += "&nbsp;&nbsp;&nbsp;&nbsp;- " + comentario + "<br />" + "\n";
             }
         }
         
+        cadenaADevolver += "<br />" + "\n" + "</p>" + "\n" + "</footer>";
+
         return cadenaADevolver;
     }
+    
+    
+    
+    
 }
