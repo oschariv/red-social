@@ -18,7 +18,18 @@ public class Comentario extends Entrada
         super(autor);
         comentarios = new ArrayList<String>();
     }
-
+    
+    public Comentario(String autor, String momentoPublicacion, String meGusta, String comentarios) {
+        super(autor, momentoPublicacion, meGusta);
+        this.comentarios = new ArrayList<String>();
+        if (!comentarios.equals("Sin comentarios")) {
+            String[] divisionComentarios = comentarios.split("%");
+            for (String comentario : divisionComentarios) {
+                this.comentarios.add(comentario);
+            }
+        }
+    }
+    
     /**
      * 
      */

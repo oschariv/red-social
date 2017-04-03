@@ -23,7 +23,14 @@ public class EntradaFoto extends Comentario
         urlImagen = url;
         this.titulo = titulo;
     }
-
+    
+    public EntradaFoto(String autor, String meGusta, String momentoPublicacion, String url, String titulo, String comentarios)
+    {
+        super(autor, momentoPublicacion, meGusta, comentarios);
+        urlImagen = url;
+        this.titulo = titulo;
+    }
+    
     /**
      * 
      */

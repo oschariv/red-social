@@ -22,7 +22,13 @@ public class EntradaTexto extends Comentario
         super(autor);
         mensaje = texto;
     }
-
+    
+    public EntradaTexto(String autor, String meGusta, String momentoPublicacion, String texto, String comentarios)
+    {
+        super(autor, momentoPublicacion, meGusta, comentarios);
+        mensaje = texto;
+    }
+    
     /**
      * 
      */

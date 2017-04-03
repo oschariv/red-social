@@ -21,7 +21,13 @@ public class EntradaUnionAGrupo extends Entrada
         super(autor);
         this.unionGrupo = unionGrupo;
     }
-
+    
+    public EntradaUnionAGrupo(String autor, String meGusta, String momentoPublicacion, String unionGrupo)
+    {
+        super(autor, momentoPublicacion, meGusta);
+        this.unionGrupo = unionGrupo;
+    }
+    
     public String toString()
     {
         String cadenaADevolver = super.toString();
@@ -41,10 +47,10 @@ public class EntradaUnionAGrupo extends Entrada
     }
     
     public void mostrarDatosExclusivos() {
-		System.out.println(unionGrupo);
-	}
-	
-	public String nombreClase(){
+        System.out.println(unionGrupo);
+    }
+    
+    public String nombreClase(){
         return this.getClass().getSimpleName();
     }
     
