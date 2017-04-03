@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.io.IOException;
 
 import java.util.Scanner;
+import java.net.URL;
 
 /**
  * Write a description of class Muro here.
@@ -18,13 +19,14 @@ public class Muro
 {
     // instance variables - replace the example below with your own
     private ArrayList<Entrada> entrada;
+    private String user;
     /**
      * Constructor for objects of class Muro
      */
     public Muro()
     {
         entrada = new ArrayList<>();
-
+        user = "";
     }
 
     /**
@@ -96,17 +98,9 @@ public class Muro
         try  
         {
             BufferedWriter archivo = Files.newBufferedWriter(rutaArchivo);
-            archivo.write("<!DOCTYPE html><html><head><title>SocialBook</title><link rel=\"stylesheet\" href=\"Recursos/estilomuro.css\"></head><body><div class=\"agrupar\"><nav class=\"menu\"><ul><li class=\"botonmenu\"><a href=\"muro.html\">Muro Social</a></li><li class=\"botonmenu\">Busqueda</li><li class=\"botonmenu\">Contactos</li><li class=\"botonmenu\">Mensajes</li><li class=\"botonmenu\"><a href=\"https://github.com/oschariv\">Mi Perfil</a></li></ul></nav><section class=\"seccion\"><h1 class=\"h1\">Seccion de noticias.</h1>");
-            for (Entrada entrada : entrada){
-                if (entrada instanceof EntradaTexto) {
-                    archivo.write("<article class=\"articulo\">" + ((EntradaTexto)entrada).toStringWeb() + "</article>");
-                }
-                else if (entrada instanceof EntradaFoto) {
-                    archivo.write("<article class=\"articulo\">" + ((EntradaFoto)entrada).toStringWeb() + "</article>");
-                }
-                else if (entrada instanceof EntradaUnionAGrupo) {
-                    archivo.write("<article class=\"articulo\">" +  ((EntradaUnionAGrupo)entrada).toStringWeb() + "</article>");
-                } 
+            archivo.write("<!DOCTYPE html><html><head><title>SocialBook "+ this.user + "</title><link rel=\"stylesheet\" href=\"Recursos/estilomuro.css\"></head><body><div class=\"agrupar\"><nav class=\"menu\"><ul><li class=\"botonmenu\"><a href=\"muro.html\">Muro Social</a></li><li class=\"botonmenu\"><a href=\"https://www.google.es/\">Busqueda</a></li><li class=\"botonmenu\">Contactos</li><li class=\"botonmenu\">Mensajes</li><li class=\"botonmenu\"><a href=\"https://github.com/oschariv\">Mi Perfil</a></li></ul></nav><section class=\"seccion\"><h1 class=\"h1\">Seccion de noticias " + this.user + "</h1>");
+            for (Entrada entrada : entrada){    
+                archivo.write("<article class=\"articulo\">" + entrada.toStringWeb() + "</article>");
             }
 
             archivo.write("</section><footer class=\"pie\">Web creada por Oscar Charro Rivera <a href=\"https://github.com/oschariv\">(@Oschariv)</a></footer></div></body></html>");
@@ -129,5 +123,40 @@ public class Muro
 
     }
 
-    
+    public void mostrarMuroEnNavegador(String user){
+        try  
+        {
+            // URL para obtener datos de las entradas.
+            URL url = new URL("https://script.google.com/macros/s/AKfycbzHc3p1twTfyF7o0_cxSwnxSsyOemuHnSu406ly9DZIf5Ck2BA/exec?user="+user);
+            // Escaner para obtner las lineas de la url
+            Scanner sc = new Scanner(url.openStream());
+            this.user = user;
+            
+            while (sc.hasNext()) {
+                String lineaLeida = sc.nextLine();
+                String[] lineaActual = lineaLeida.split(";");
+                if (lineaActual[0].equals("EntradaTexto")){
+                    EntradaTexto entradaTexto = new EntradaTexto(lineaActual[1], lineaActual[2], lineaActual[3], lineaActual[4], lineaActual[5]);
+                    entrada.add(entradaTexto);
+                }
+                else if (lineaActual[0].equals("EntradaFoto")) {
+                    EntradaFoto entradaFoto = new EntradaFoto(lineaActual[1], lineaActual[2], lineaActual[3], lineaActual[4], lineaActual[5], lineaActual[6]);
+                    entrada.add(entradaFoto);
+                }
+                else if (lineaActual[0].equals("EntradaUnionAGrupo")) {
+                    EntradaUnionAGrupo entradaUnionAGrupo = new EntradaUnionAGrupo(lineaActual[1], lineaActual[2], lineaActual[3], lineaActual[4]);
+                    entrada.add(entradaUnionAGrupo);
+                }
+            }
+            sc.close();
+
+            this.mostrarMuroEnNavegador();
+        }
+        catch (IOException excepcion) {
+            // Mostramos por pantalla la excepción que se ha producido
+            System.out.println(excepcion.toString());
+        }
+
+    }
+
 }
