@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Comentario extends Entrada
+public abstract class Comentario extends Entrada
 {
     // instance variables - replace the example below with your own
     private ArrayList<String> comentarios;

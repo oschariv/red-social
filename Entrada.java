@@ -1,13 +1,12 @@
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Scanner;
 /**
  * Write a description of class Entrada here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Entrada
+public abstract class Entrada
 {
     // instance variables - replace the example below with your own
     private String usuario;
@@ -111,13 +110,9 @@ public class Entrada
         return usuario;
     }
 
-    public void mostrar(){
-        System.out.println(this);
-    }
+    public abstract void mostrar();
 
-    public int getCantidadDeDatosAsociadosALaEntrada(){
-        return 0;
-    }
+    public abstract int getCantidadDeDatosAsociadosALaEntrada();
 
     public String nombreClase(){
         return this.getClass().getSimpleName();
